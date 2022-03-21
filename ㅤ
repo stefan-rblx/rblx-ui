@@ -1,3 +1,7 @@
+if game.CoreGui:FindFirstChild("ScreenGui") then
+    game.CoreGui["ScreenGui"]:Destroy()
+end
+
 local library = {flags = {}, windows = {}, open = true}
 
 --Services
