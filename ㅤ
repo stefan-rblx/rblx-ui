@@ -2,6 +2,21 @@ if game.CoreGui:FindFirstChild("ScreenGui") then
     game.CoreGui["ScreenGui"]:Destroy()
 end
 
+local uis = game:GetService("UserInputService")
+local niggeruiopen = false
+uis.InputBegan:Connect(function(input, isProcessed)
+    if isProcessed then return end
+        if input.KeyCode == Enum.KeyCode.C then
+            if niggeruiopen == true then
+            niggeruiopen = false
+            game.CoreGui.ScreenGui.Enabled = false
+            elseif niggeruiopen == false then
+            niggeruiopen = true
+            game.CoreGui.ScreenGui.Enabled = true
+            end
+        end
+end)
+
 local library = {flags = {}, windows = {}, open = true}
 
 --Services
@@ -1728,21 +1743,6 @@ inputService.InputChanged:connect(function(input)
     if input == dragInput and dragging then
         update(input)
     end
-end)
-
-local uis = game:GetService("UserInputService")
-local niggeruiopen = false
-uis.InputBegan:Connect(function(input, isProcessed)
-    if isProcessed then return end
-        if input.KeyCode == Enum.KeyCode.C then
-            if niggeruiopen == true then
-            niggeruiopen = false
-            game.CoreGui.ScreenGui.Enabled = false
-            elseif niggeruiopen == false then
-            niggeruiopen = true
-            game.CoreGui.ScreenGui.Enabled = true
-            end
-        end
 end)
 
 return library
