@@ -1726,4 +1726,19 @@ inputService.InputChanged:connect(function(input)
     end
 end)
 
+local uis = game:GetService("UserInputService")
+local niggeruiopen = false
+uis.InputBegan:Connect(function(input, isProcessed)
+    if isProcessed then return end
+        if input.KeyCode == Enum.KeyCode.C then
+            if niggeruiopen == true then
+            niggeruiopen = false
+            game.CoreGui.ScreenGui.Enabled = false
+            elseif niggeruiopen == false then
+            niggeruiopen = true
+            game.CoreGui.ScreenGui.Enabled = true
+            end
+        end
+end)
+
 return library
